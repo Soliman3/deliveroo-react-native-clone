@@ -3,6 +3,7 @@ import React, { useLayoutEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { ChevronDownIcon, UserIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Sections from '../components/Sections';
+import FeatureRow from '../components/FeatureRow';
 
 const HomeScreen = () => {
   const navigation = useNavigation()
@@ -37,12 +38,29 @@ const HomeScreen = () => {
           
         </View>
         {/* scrollable Body */}
-        <ScrollView className="bg-gray-100">
+        <ScrollView className="bg-gray-100" contentContainerStyle={{ paddingBottom: 240 }}>
 
           {/* Sections */}
           <Sections/>
           {/* Feature row */}
-
+          <FeatureRow
+            id="1"
+            title="Featured"
+            description="Paid placement for our partner"
+            featuredCategory="Featured"
+          />
+          <FeatureRow
+            id="2"
+            title="Tasty Discounts"
+            description="Everyone has been enjoing these juicy discounts"
+            featuredCategory="discounts"
+          />
+          <FeatureRow
+            id="3"
+            title="Offers near you!"
+            description="Why not support your local restaurant today!!"
+            featuredCategory="offers  "
+          />
         </ScrollView>
       </View>
     </SafeAreaView>
