@@ -1,8 +1,6 @@
-import {defineField, defineType} from 'sanity'
-
-export default defineType({
-  name: 'dish',
-  title: 'Dish',
+export default ({
+  name: 'product',
+  title: 'Product',
   type: 'document',
   fields: [
     {

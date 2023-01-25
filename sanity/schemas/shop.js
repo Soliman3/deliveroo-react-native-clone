@@ -1,6 +1,4 @@
-import {defineField, defineType} from 'sanity'
-
-export default defineType({
+export default ({
   name: 'shop',
   title: 'Shop',
   type: 'document',
@@ -17,7 +15,11 @@ export default defineType({
       title: 'short description',
       validation: (Rule)=> Rule.max(200),
     },
-    
+    {
+      name: 'image',
+      type: 'image',
+      title: 'Shop Image',
+    },
     {
       name: 'lat',
       type: 'number',
@@ -49,10 +51,10 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'dishes',
+      name: 'products',
       type: 'array',
-      title: 'Dishes',
-      of: [{type: 'reference', to: [{type: 'dish'}]}],
+      title: 'Products',
+      of: [{type: 'reference', to: [{type: 'product'}]}],
     },
   ],
 })

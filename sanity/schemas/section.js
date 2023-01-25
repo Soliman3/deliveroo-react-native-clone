@@ -1,6 +1,4 @@
-import {defineField, defineType} from 'sanity'
-
-export default defineType({
+export default ({
   name: 'section',
   title: 'Section Menu',
   type: 'document',
