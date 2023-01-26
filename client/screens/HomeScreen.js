@@ -1,11 +1,14 @@
 import { View, Text, SafeAreaView, Image, TextInput, ScrollView } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { ChevronDownIcon, UserIcon, AdjustmentsVerticalIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Sections from '../components/Sections';
 import FeatureRow from '../components/FeatureRow';
+import client from '../sanity';
 
 const HomeScreen = () => {
+  const [featuredSections, setFeaturedSection] = useState([])
+  
   const navigation = useNavigation()
 
   useLayoutEffect(() => {
@@ -14,6 +17,17 @@ const HomeScreen = () => {
     })
   },[])
 
+  // fetching data from sanity cms...
+  useEffect(() => {
+    client.fetch(`
+    *[_type == "featured"] {
+      ...,
+    shops[]->{
+        ...,
+        products[]->,
+      }
+     }`).then(data=>{setFeaturedSection(data)})
+  },[])
   return (
     <SafeAreaView className="bg-white pt-5 ">
       <View className="text-red-500">
